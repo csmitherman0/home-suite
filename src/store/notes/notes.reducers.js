@@ -1,4 +1,13 @@
-const initialNotes = [];
+const initialNotes = [
+  {
+    title: "Ideas",
+    content: "scary monster, purple bunny, big bad wolf, blah blah blah",
+  },
+  {
+    title: "other stuff",
+    content: "dont forget to drink your ovaltine",
+  },
+];
 
 export const notesReducer = (notes = initialNotes, action) => {
   switch (action.type) {

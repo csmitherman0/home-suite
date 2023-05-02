@@ -2,19 +2,23 @@ import trash from '../../../assets/svg/trash.svg';
 import check from '../../../assets/svg/check.svg';
 
 import { useDispatch } from 'react-redux';
-import { removeTodo, toggleTodo } from '../../../store/todolist/todolist.actions';
+import { toggleTodo } from '../../../store/todolist/todolist.actions';
 
-const Todo = ({ todo }) => {
+const Todo = ({ todo, setDeleteDialogVisible, setDeletedTodo }) => {
     const dispatch = useDispatch();
-    const handleTrashClick = () => {
-        dispatch(removeTodo(todo))
+
+    const handleTrashClick = (e) => {
+        e.stopPropagation();
+        setDeleteDialogVisible(true);
+        setDeletedTodo(todo);
     };
+
     const handleCheckClick = () => {
         dispatch(toggleTodo(todo));
     };
     return (
         <div
-            id='todo'
+            className='todo'
             style={{
                 width: '100%',
                 textAlign: 'center',

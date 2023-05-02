@@ -9,6 +9,7 @@ import App from "./App";
 import NotFound from "./NotFound";
 
 import Todolist from "./views/Todolist/Todolist";
+import Notes from "./views/Notes/Notes";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: "/todolist",
         element: <Todolist />,
+      },
+      {
+        path: "/notes",
+        element: <Notes />,
       },
     ],
   },
