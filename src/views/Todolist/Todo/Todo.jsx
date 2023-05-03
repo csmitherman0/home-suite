@@ -4,12 +4,12 @@ import check from '../../../assets/svg/check.svg';
 import { useDispatch } from 'react-redux';
 import { toggleTodo } from '../../../store/todolist/todolist.actions';
 
-const Todo = ({ todo, setDeleteDialogVisible, setDeletedTodo }) => {
+const Todo = ({ todo, showDeleteDialog, setDeletedTodo }) => {
     const dispatch = useDispatch();
 
     const handleTrashClick = (e) => {
         e.stopPropagation();
-        setDeleteDialogVisible(true);
+        dispatch(showDeleteDialog());
         setDeletedTodo(todo);
     };
 

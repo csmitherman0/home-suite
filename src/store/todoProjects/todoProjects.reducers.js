@@ -1,4 +1,4 @@
-const initialProjects = ["General"];
+const initialProjects = ["general", "office"];
 
 export const todoProjectsReducer = (projects = initialProjects, action) => {
   switch (action.type) {
