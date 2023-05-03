@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { addTodo, removeTodo } from '../../store/todolist/todolist.actions.js';
 
 import Todo from './Todo/Todo.jsx';
+import TodolistNav from './TodolistNav/TodolistNav.jsx';
 import DeleteDialog from '../../components/dialogs/DeleteDialog.jsx';
 
 const Todolist = () => {
@@ -29,6 +30,7 @@ const Todolist = () => {
 
     return (
         <div id='todolist' onClick={handleContainerClick}>
+            <TodolistNav />
             <form onSubmit={handleSubmit}>
                 <input
                     type="text" placeholder='Todo Title'
