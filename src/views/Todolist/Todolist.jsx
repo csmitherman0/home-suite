@@ -54,7 +54,7 @@ const Todolist = () => {
                     onClick={() => dispatch(showTodolistNav())}
                 />
             )}
-            {ui.todolistNavShowing && <TodolistNav projects={projects} />}
+            {ui.todolistNavShowing && <TodolistNav />}
             <form onSubmit={handleSubmit}>
                 <input
                     type="text" placeholder='Todo Title'

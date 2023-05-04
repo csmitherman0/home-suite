@@ -19,8 +19,16 @@
     from {
         transform: translateX(-200px);
     }
-    
+
     to {
         transform: none;
     }
+}
+
+#todolistNav form input {
+    width: 80%;
+    margin-top: 30px;
+    border: none;
+    background-color: lightgray;
+    padding: 10px;
 }

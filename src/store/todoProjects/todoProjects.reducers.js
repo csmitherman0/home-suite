@@ -1,4 +1,15 @@
-const initialProjects = ["general", "office"];
+import { v4 as uuid } from "uuid";
+
+const initialProjects = [
+  {
+    name: "general",
+    _id: uuid(),
+  },
+  {
+    name: "office",
+    _id: uuid(),
+  },
+];
 
 export const todoProjectsReducer = (projects = initialProjects, action) => {
   switch (action.type) {
