@@ -9,7 +9,7 @@ import closeSquare from '../../../assets/svg/close-square.svg';
 const TodolistNav = ({ projects }) => {
     const dispatch = useDispatch();
     const handleProjectClick = (e) => {
-        dispatch(changeTodoProject(e.target.key))
+        dispatch(changeTodoProject(e.target.getAttribute('data-project')));
     };
     return (
         <div
@@ -29,6 +29,7 @@ const TodolistNav = ({ projects }) => {
             {projects.map(p => {
                 return <a
                     key={p}
+                    data-project={p}
                     onClick={handleProjectClick}
                 >{p}</a>
             })}
