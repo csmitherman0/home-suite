@@ -17,8 +17,14 @@ export const changeTodoProject = (targetProject) => {
   };
 };
 
-export const toggleTodolistNav = () => {
+export const showTodolistNav = () => {
   return {
-    type: "ui/toggleTodolistNav",
+    type: "ui/showTodolistNav",
+  };
+};
+
+export const hideTodolistNav = () => {
+  return {
+    type: "ui/hideTodolistNav",
   };
 };

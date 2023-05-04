@@ -1,0 +1,26 @@
+#todolistNav {
+    animation: slideIn 0.5s;
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 50px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: linear-gradient(to right, blue, white);
+    padding-top: 40px;
+    gap: 50px;
+    text-transform: uppercase;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-200px);
+    }
+    
+    to {
+        transform: none;
+    }
+}

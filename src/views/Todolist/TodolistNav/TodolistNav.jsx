@@ -1,29 +1,35 @@
+import './TodolistNav.styles.css';
+
 import { useDispatch } from "react-redux";
 
-import { changeTodoProject } from "../../../store/ui/ui.actions";
+import { changeTodoProject, hideTodolistNav } from "../../../store/ui/ui.actions";
+
+import closeSquare from '../../../assets/svg/close-square.svg';
 
 const TodolistNav = ({ projects }) => {
-    const handleClick = () => { };
+    const dispatch = useDispatch();
+    const handleProjectClick = (e) => {
+        dispatch(changeTodoProject(e.target.key))
+    };
     return (
         <div
             id='todolistNav'
-            style={{
-                height: '100%',
-                width: 200,
-                position: 'fixed',
-                zIndex: 1,
-                top: 50,
-                left: 0,
-                backgroundColor: 'blue',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center'
-            }}
         >
+            <img
+                src={closeSquare}
+                style={{
+                    position: 'absolute',
+                    top: 0,
+                    right: 0,
+                    width: 40,
+                    height: 40
+                }}
+                onClick={() => dispatch(hideTodolistNav())}
+            />
             {projects.map(p => {
                 return <a
-                    onClick={handleClick}
+                    key={p}
+                    onClick={handleProjectClick}
                 >{p}</a>
             })}
         </div>

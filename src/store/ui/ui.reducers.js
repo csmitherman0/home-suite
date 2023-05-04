@@ -21,10 +21,15 @@ export const uiReducer = (ui = initialUI, action) => {
         ...ui,
         currTodoProject: action.payload,
       };
-    case "ui/toggleTodolistNav":
+    case "ui/showTodolistNav":
       return {
         ...ui,
-        todolistNavShowing: !ui.todolistNavShowing,
+        todolistNavShowing: true,
+      };
+    case "ui/hideTodolistNav":
+      return {
+        ...ui,
+        todolistNavShowing: false,
       };
     default:
       return ui;

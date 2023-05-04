@@ -2,11 +2,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { addTodo, removeTodo } from '../../store/todolist/todolist.actions.js';
 
-import { showDeleteDialog, hideDeleteDialog } from '../../store/ui/ui.actions.js';
+import { showDeleteDialog, hideDeleteDialog, showTodolistNav } from '../../store/ui/ui.actions.js';
 
 import Todo from './Todo/Todo.jsx';
 import TodolistNav from './TodolistNav/TodolistNav.jsx';
 import DeleteDialog from '../../components/dialogs/DeleteDialog.jsx';
+
+import hamburger from '../../assets/svg/hamburger.svg';
 
 const Todolist = () => {
     const todolist = useSelector(state => state.todolist);
@@ -39,7 +41,20 @@ const Todolist = () => {
     return (
         <div id='todolist' onClick={handleContainerClick}>
             <h1>{ui.currTodoProject}</h1>
-            <TodolistNav projects={projects} />
+            {!ui.todolistNavShowing && (
+                <img
+                    src={hamburger}
+                    style={{
+                        position: 'absolute',
+                        top: 55,
+                        left: 0,
+                        width: 40,
+                        height: 40
+                    }}
+                    onClick={() => dispatch(showTodolistNav())}
+                />
+            )}
+            {ui.todolistNavShowing && <TodolistNav projects={projects} />}
             <form onSubmit={handleSubmit}>
                 <input
                     type="text" placeholder='Todo Title'
@@ -50,9 +65,9 @@ const Todolist = () => {
                     }}
                 />
             </form>
-            {todolist.map((todo, i) => {
+            {todolist.map(((todo, i) => {
                 return <Todo todo={todo} key={i} showDeleteDialog={showDeleteDialog} setDeletedTodo={setDeletedTodo} />;
-            })}
+            }))}
             {ui.deleteDialogShowing && <DeleteDialog target={deletedTodo} handleClick={handleDeleteButtonClick} />}
         </div>
     );
