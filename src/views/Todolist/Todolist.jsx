@@ -22,7 +22,7 @@ const Todolist = () => {
 
     useEffect(() => {
         setCurrTodos(todolist.filter(t => t.project === ui.currTodoProject));
-    }, [ui.currTodoProject])
+    }, [ui.currTodoProject, todolist])
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -65,7 +65,7 @@ const Todolist = () => {
                     }}
                 />
             </form>
-            {todolist.map(((todo, i) => {
+            {currTodos?.map(((todo, i) => {
                 return <Todo todo={todo} key={i} showDeleteDialog={showDeleteDialog} setDeletedTodo={setDeletedTodo} />;
             }))}
             {ui.deleteDialogShowing && <DeleteDialog target={deletedTodo} handleClick={handleDeleteButtonClick} />}
