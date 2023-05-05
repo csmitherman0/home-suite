@@ -10,9 +10,9 @@ export const addProject = (name) => {
   };
 };
 
-export const removeProject = (target) => {
+export const removeProject = (targetId) => {
   return {
     type: "todoProjects/removeProject",
-    payload: target,
+    payload: targetId,
   };
 };

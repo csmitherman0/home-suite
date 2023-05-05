@@ -16,7 +16,7 @@ export const todoProjectsReducer = (projects = initialProjects, action) => {
     case "todoProjects/addProject":
       return [...projects, action.payload];
     case "todoProjects/removeProject":
-      return projects.filter((p) => p._id !== action.payload._id);
+      return projects.filter((p) => p._id !== action.payload);
     default:
       return projects;
   }

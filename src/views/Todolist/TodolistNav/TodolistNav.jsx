@@ -6,6 +6,7 @@ import { changeTodoProject, hideTodolistNav } from "../../../store/ui/ui.actions
 import { addProject, removeProject } from '../../../store/todoProjects/todoProjects.actions';
 
 import closeSquare from '../../../assets/svg/close-square.svg';
+import trash from '../../../assets/svg/trash.svg';
 
 const TodolistNav = () => {
     const projects = useSelector(state => state.todolistProjects);
@@ -21,6 +22,12 @@ const TodolistNav = () => {
 
         }
     };
+
+    const handleTrashClick = (e) => {
+        e.stopPropagation();
+        dispatch(removeProject(e.target.getAttribute('data-project')));
+    };
+
     return (
         <div
             id='todolistNav'
@@ -35,7 +42,15 @@ const TodolistNav = () => {
                     key={p._id}
                     data-project={p.name}
                     onClick={handleProjectClick}
-                >{p.name}</a>
+                >
+                    {p.name}
+                    <img
+                        id='trashIcon'
+                        src={trash}
+                        onClick={handleTrashClick}
+                        data-project={p._id}
+                    />
+                </a>
             })}
             <form onSubmit={handleSubmit}>
                 <input type='text' name='projectName' />
