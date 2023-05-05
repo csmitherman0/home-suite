@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { addTodo, removeTodo } from '../../store/todolist/todolist.actions.js';
 
-import { showDeleteDialog, hideDeleteDialog, showTodolistNav } from '../../store/ui/ui.actions.js';
+import { showDeleteDialog, hideDeleteDialog, showTodolistNav, changeTodoProject } from '../../store/ui/ui.actions.js';
 
 import Todo from './Todo/Todo.jsx';
 import TodolistNav from './TodolistNav/TodolistNav.jsx';
@@ -21,8 +21,12 @@ const Todolist = () => {
     const [currTodos, setCurrTodos] = useState();
 
     useEffect(() => {
+        dispatch(changeTodoProject(projects[0]));
+    }, []);
+
+    useEffect(() => {
         setCurrTodos(todolist.filter(t => t.project === ui.currTodoProject));
-    }, [ui.currTodoProject, todolist])
+    }, [ui.currTodoProject, todolist]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -40,7 +44,7 @@ const Todolist = () => {
 
     return (
         <div id='todolist' onClick={handleContainerClick}>
-            <h1>{ui.currTodoProject}</h1>
+            <h1>{ui.currTodoProject.name}</h1>
             {!ui.todolistNavShowing && (
                 <img
                     src={hamburger}

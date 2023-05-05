@@ -12,9 +12,13 @@ const TodolistNav = () => {
     const projects = useSelector(state => state.todolistProjects);
     const ui = useSelector(state => state.ui);
     const dispatch = useDispatch();
+
     const handleProjectClick = (e) => {
-        dispatch(changeTodoProject(e.target.getAttribute('data-project')));
+        const projectId = e.target.getAttribute('data-project');
+        const targetProject = projects.find(p => p._id === projectId);
+        dispatch(changeTodoProject(targetProject));
     };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const projectName = e.target.elements.projectName.value;
@@ -26,9 +30,8 @@ const TodolistNav = () => {
     const handleTrashClick = (e) => {
         e.stopPropagation();
         const projectId = e.target.getAttribute('data-project');
-        const projectName = e.target.getAttribute('data-project-name');
-        if (ui.currTodoProject === projectName) {
-            dispatch(changeTodoProject(projects[0].name));
+        if (ui.currTodoProject._id === projectId) {
+            dispatch(changeTodoProject(projects[0]));
         }
         dispatch(removeProject(projectId));
     };
@@ -45,7 +48,7 @@ const TodolistNav = () => {
             {projects.map(p => {
                 return <a
                     key={p._id}
-                    data-project={p.name}
+                    data-project={p._id}
                     onClick={handleProjectClick}
                 >
                     {p.name}
@@ -54,7 +57,6 @@ const TodolistNav = () => {
                         src={trash}
                         onClick={handleTrashClick}
                         data-project={p._id}
-                        data-project-name={p.name}
                     />
                 </a>
             })}

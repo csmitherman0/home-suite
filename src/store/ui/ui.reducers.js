@@ -1,6 +1,6 @@
 const initialUI = {
   deleteDialogShowing: false,
-  currTodoProject: "general",
+  currTodoProject: "",
   todolistNavShowing: false,
 };
 
