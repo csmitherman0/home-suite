@@ -31,4 +31,23 @@
     border: none;
     background-color: lightgray;
     padding: 10px;
+    border-radius: 10px;
+}
+
+#todolistNav form button {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: sans-serif;
+}
+
+#closeSquare {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
 }

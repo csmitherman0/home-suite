@@ -26,14 +26,8 @@ const TodolistNav = () => {
             id='todolistNav'
         >
             <img
+                id='closeSquare'
                 src={closeSquare}
-                style={{
-                    position: 'absolute',
-                    top: 0,
-                    right: 0,
-                    width: 40,
-                    height: 40
-                }}
                 onClick={() => dispatch(hideTodolistNav())}
             />
             {projects.map(p => {
