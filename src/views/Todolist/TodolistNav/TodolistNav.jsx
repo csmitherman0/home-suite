@@ -30,6 +30,9 @@ const TodolistNav = () => {
     const handleTrashClick = (e) => {
         e.stopPropagation();
         const projectId = e.target.getAttribute('data-project');
+        if (projectId === projects[0]._id) {
+            return null;
+        }
         if (ui.currTodoProject._id === projectId) {
             dispatch(changeTodoProject(projects[0]));
         }
