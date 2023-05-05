@@ -10,6 +10,7 @@ import trash from '../../../assets/svg/trash.svg';
 
 const TodolistNav = () => {
     const projects = useSelector(state => state.todolistProjects);
+    const ui = useSelector(state => state.ui);
     const dispatch = useDispatch();
     const handleProjectClick = (e) => {
         dispatch(changeTodoProject(e.target.getAttribute('data-project')));
@@ -19,13 +20,17 @@ const TodolistNav = () => {
         const projectName = e.target.elements.projectName.value;
         if (projectName) {
             dispatch(addProject(projectName));
-
         }
     };
 
     const handleTrashClick = (e) => {
         e.stopPropagation();
-        dispatch(removeProject(e.target.getAttribute('data-project')));
+        const projectId = e.target.getAttribute('data-project');
+        const projectName = e.target.getAttribute('data-project-name');
+        if (ui.currTodoProject === projectName) {
+            dispatch(changeTodoProject(projects[0].name));
+        }
+        dispatch(removeProject(projectId));
     };
 
     return (
@@ -49,6 +54,7 @@ const TodolistNav = () => {
                         src={trash}
                         onClick={handleTrashClick}
                         data-project={p._id}
+                        data-project-name={p.name}
                     />
                 </a>
             })}
