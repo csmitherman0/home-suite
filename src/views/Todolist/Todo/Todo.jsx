@@ -1,5 +1,6 @@
 import trash from '../../../assets/svg/trash.svg';
 import check from '../../../assets/svg/check.svg';
+import restore from '../../../assets/svg/restore.svg';
 
 import { useDispatch } from 'react-redux';
 import { toggleTodo } from '../../../store/todolist/todolist.actions';
@@ -35,16 +36,20 @@ const Todo = ({ todo, showDeleteDialog, setDeletedTodo }) => {
                     position: 'absolute',
                     top: 0,
                     right: 0,
+                    width: 30,
+                    height: 30,
                     cursor: 'pointer',
                 }}
             />
             <img
-                src={check}
+                src={todo.completed ? restore : check}
                 onClick={handleCheckClick}
                 style={{
                     position: 'absolute',
                     top: 0,
                     left: 0,
+                    width: 30,
+                    height: 30,
                     cursor: 'pointer',
                 }}
             />
