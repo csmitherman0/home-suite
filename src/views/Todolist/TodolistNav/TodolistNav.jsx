@@ -26,6 +26,9 @@ const TodolistNav = () => {
         if (projectName) {
             dispatch(addProject(projectName));
         }
+
+        // Clear the input
+        e.target.elements.projectName.value = '';
     };
 
     const handleTrashClick = (e) => {
