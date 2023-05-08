@@ -11,6 +11,8 @@ export const todoListReducer = (todolist = initialTodoList, action) => {
       const index = todolistCopy.findIndex((t) => t._id === action.payload._id);
       todolistCopy[index].completed = !todolistCopy[index].completed;
       return todolistCopy;
+    case "todolist/removeTodosByProject":
+      return todolist.filter((t) => t.project._id !== action.payload._id);
     default:
       return todolist;
   }

@@ -24,3 +24,10 @@ export const toggleTodo = (targetTodo) => {
     payload: targetTodo,
   };
 };
+
+export const removeTodosByProject = (targetProject) => {
+  return {
+    type: "todolist/removeTodosByProject",
+    payload: targetProject,
+  };
+};

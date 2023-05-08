@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { changeTodoProject, hideTodolistNav } from "../../../store/ui/ui.actions";
 import { addProject, removeProject } from '../../../store/todoProjects/todoProjects.actions';
+import { removeTodosByProject } from '../../../store/todolist/todolist.actions';
 
 import closeSquare from '../../../assets/svg/close-square.svg';
 import trash from '../../../assets/svg/trash.svg';
@@ -36,6 +37,7 @@ const TodolistNav = () => {
         if (ui.currTodoProject._id === projectId) {
             dispatch(changeTodoProject(projects[0]));
         }
+        dispatch(removeTodosByProject({ _id: projectId }))
         dispatch(removeProject(projectId));
     };
 
