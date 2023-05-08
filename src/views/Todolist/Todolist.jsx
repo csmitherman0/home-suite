@@ -44,7 +44,7 @@ const Todolist = () => {
 
     return (
         <div id='todolist' onClick={handleContainerClick}>
-            <h1>{ui.currTodoProject.name}</h1>
+            <h1>{ui.currTodoProject.name.toUpperCase()}</h1>
             {!ui.todolistNavShowing && (
                 <img
                     src={hamburger}
