@@ -32,6 +32,7 @@
     background-color: lightgray;
     padding: 10px;
     border-radius: 10px;
+    margin-bottom: 25px;
 }
 
 #todolistNav form button {
