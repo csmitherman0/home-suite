@@ -18,7 +18,7 @@ const Todolist = () => {
 
     // Because the <DeleteDialog /> component has no way of knowing which todo to delete. That data must come from the <Todo /> component.
     const [deletedTodo, setDeletedTodo] = useState({});
-    const [currTodos, setCurrTodos] = useState();
+    const [currTodos, setCurrTodos] = useState([]);
 
     useEffect(() => {
         dispatch(changeTodoProject(projects[0]));
@@ -44,7 +44,7 @@ const Todolist = () => {
 
     return (
         <div id='todolist' onClick={handleContainerClick}>
-            <h1>{ui.currTodoProject.name.toUpperCase()}</h1>
+            <h1>{ui?.currTodoProject?.name?.toUpperCase()}</h1>
             {!ui.todolistNavShowing && (
                 <img
                     src={hamburger}
