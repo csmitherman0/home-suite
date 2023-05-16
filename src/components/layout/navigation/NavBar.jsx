@@ -1,4 +1,4 @@
-import './styles.css';
+import './NavBar.styles.css';
 
 import { persistor } from '../../../store/index.js';
 
