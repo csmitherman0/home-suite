@@ -53,7 +53,8 @@ const Todolist = () => {
                         top: 55,
                         left: 0,
                         width: 40,
-                        height: 40
+                        height: 40,
+                        cursor: 'pointer'
                     }}
                     onClick={() => dispatch(showTodolistNav())}
                 />
