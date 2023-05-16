@@ -1,0 +1,13 @@
+#deleteDialog button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 20px;
+    text-transform: uppercase;
+    font-weight: 700px;
+    font-size: 20px;
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+}
