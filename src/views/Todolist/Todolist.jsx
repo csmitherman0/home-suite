@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { addTodo, removeTodo } from '../../store/todolist/todolist.actions.js';
 
 import { showDeleteDialog, hideDeleteDialog, showTodolistNav, changeTodoProject } from '../../store/ui/ui.actions.js';
@@ -18,15 +18,14 @@ const Todolist = () => {
 
     // Because the <DeleteDialog /> component has no way of knowing which todo to delete. That data must come from the <Todo /> component.
     const [deletedTodo, setDeletedTodo] = useState({});
-    const [currTodos, setCurrTodos] = useState([]);
+
+    const currTodos = useMemo(() => {
+        return todolist.filter(t => t.project._id === ui.currTodoProject._id)
+    }, [todolist, ui.currTodoProject._id]);
 
     useEffect(() => {
         dispatch(changeTodoProject(projects[0]));
     }, []);
-
-    useEffect(() => {
-        setCurrTodos(todolist.filter(t => t.project === ui.currTodoProject));
-    }, [ui.currTodoProject, todolist]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
