@@ -1,5 +1,6 @@
 import './NavBar.styles.css';
 
+import { Link } from 'react-router-dom';
 import { persistor } from '../../../store/index.js';
 
 const NavBar = () => {
@@ -11,9 +12,15 @@ const NavBar = () => {
     return (
         <nav>
             <ul>
-                <li><a href='/todolist'>Todo List</a></li>
-                <li><a href='/notes'>Notes</a></li>
-                <li style={{ float: 'right' }} onClick={purgeCache}><a href='/'>Purge Store</a></li>
+                <li>
+                    <Link to="/todolist">Todo List</Link>
+                </li>
+                <li>
+                    <Link to="/notes">Notes</Link>
+                </li>
+                <li style={{ float: "right" }} onClick={purgeCache}>
+                    <Link to="/">Purge Store</Link>
+                </li>
             </ul>
         </nav>
     );
