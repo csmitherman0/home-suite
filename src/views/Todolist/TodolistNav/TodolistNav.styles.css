@@ -20,6 +20,7 @@
 
 #todolistNav a {
     color: white;
+    cursor: pointer;
 }
 
 @keyframes slideIn {

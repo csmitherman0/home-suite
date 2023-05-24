@@ -19,7 +19,7 @@ const NavBar = () => {
                     <Link to="/notes">Notes</Link>
                 </li>
                 <li style={{ float: "right" }} onClick={purgeCache}>
-                    <Link to="/">Purge Store</Link>
+                    <a href="/">Purge Store</a>
                 </li>
             </ul>
         </nav>
